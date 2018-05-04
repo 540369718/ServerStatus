@@ -82,10 +82,7 @@ Caddy配置文件：/usr/local/caddy/caddy
 
 服务器总流量单位为：T=TB，G=GB，M=MB，K=KB
 
-### CentOS7系统 负载显示异常的问题
-
-CentOS7系统 默认可能没有安装 netstat 依赖，所以会造成IP检测(负载)出错，手动安装即可：
-`yum install net-tools -y `
+## 修改后的脚本仅适用于Ubuntu
 
 # 相关开源项目，感谢： 
 
