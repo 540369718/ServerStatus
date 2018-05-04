@@ -185,8 +185,30 @@ Installation_dependency(){
 	apt-get update
 	apt-get install -y python unzip vim build-essential make	
 }
+Del_iptables(){
+	iptables -D INPUT -m state --state NEW -m tcp -p tcp --dport ${port} -j ACCEPT
+	iptables -D INPUT -m state --state NEW -m udp -p udp --dport ${port} -j ACCEPT
+}
+Uninstall_ServerStatus_server(){
+	check_installed_server_status
+	check_pid_server
+	[[ ! -z $PID ]] && kill -9 ${PID}
+	Del_iptables
+	if [[ -e "${client_file}" ]]; then
+		mv "${client_file}" "/usr/local/status-client.py"
+		rm -rf "${file}"
+		mkdir "${file}"
+		mv "/usr/local/status-client.py" "${client_file}"
+	else
+		rm -rf "${file}"
+	fi
+	rm -rf "/etc/init.d/status-server"
+	/etc/init.d/caddy stop
+	update-rc.d -f status-server remove
+	echo && echo "ServerStatus 卸载完成 !" && echo	
+}
 Install_ServerStatus_server(){
-	[[ -e "${server_file}" ]] && echo -e "${Error} 检测到 ServerStatus 服务端已安装 !" && exit 1
+	[[ -e "${server_file}" ]] && echo -e "${Error} 检测到 ServerStatus 服务端已安装 !" && Uninstall_ServerStatus_server
 	Set_server
 	Set_server_port
 	echo -e "${Info} 开始安装/配置 依赖..."

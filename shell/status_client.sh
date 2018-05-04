@@ -135,8 +135,26 @@ Start_ServerStatus_client(){
 	[[ ! -z ${PID} ]] && echo -e "${Error} ServerStatus 正在运行，请检查 !" && exit 1
 	/etc/init.d/status-client start
 }
+Del_iptables(){
+	iptables -D INPUT -m state --state NEW -m tcp -p tcp --dport ${port} -j ACCEPT
+	iptables -D INPUT -m state --state NEW -m udp -p udp --dport ${port} -j ACCEPT
+}
+Uninstall_ServerStatus_client(){
+	check_installed_client_status
+	check_pid_client
+	[[ ! -z $PID ]] && kill -9 ${PID}
+	Del_iptables
+	if [[ -e "${client_file}" ]]; then
+		rm -rf ${client_file}
+	else
+		rm -rf ${file}
+	fi
+	rm -rf /etc/init.d/status-client
+	update-rc.d -f status-client remove
+	echo && echo "ServerStatus 卸载完成 !" && echo
+}
 Install_ServerStatus_client(){
-	[[ -e ${client_file} ]] && echo -e "${Error} 检测到 ServerStatus 客户端已安装 !" && exit 1
+	[[ -e ${client_file} ]] && echo -e "${Error} 检测到 ServerStatus 客户端已安装 !" && Uninstall_ServerStatus_client
 	echo -e "${Info} 开始设置 用户配置..."
 	Set_config_client
 	echo -e "${Info} 开始安装/配置 依赖..."
