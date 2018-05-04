@@ -86,9 +86,9 @@ function uptime() {
 				$("#servers").append(
 					"<tr id=\"r" + i + "\" data-toggle=\"collapse\" data-target=\"#rt" + i + "\" class=\"accordion-toggle " + hack + "\">" +
 						"<td id=\"online4\"><div class=\"progress\"><div style=\"width: 100%;\" class=\"progress-bar progress-bar-warning\"><small>加载中</small></div></div></td>" +
+						"<td id=\"ip_status\"><div class=\"progress\"><div style=\"width: 100%;\" class=\"progress-bar progress-bar-warning\"><small>加载中</small></div></div></td>" +
 						"<td id=\"name\">加载中</td>" +
 						"<td id=\"type\">加载中</td>" +
-						"<!-- td id=\"host\">加载中</td -->" +
 						"<td id=\"location\">加载中</td>" +
 						"<td id=\"uptime\">加载中</td>" +
 						"<td id=\"load\">加载中</td>" +
@@ -133,14 +133,20 @@ function uptime() {
 			//	TableRow.children["online6"].children[0].children[0].innerHTML = "<small>关闭</small>";
 			//}
 
+			// Ipstatus
+			if (result.servers[i].ip_status) {
+				TableRow.children["ip_status"].children[0].children[0].className = "progress-bar progress-bar-success";
+				TableRow.children["ip_status"].children[0].children[0].innerHTML = "<small>MH361</small>";
+			} else {
+				TableRow.children["ip_status"].children[0].children[0].className = "progress-bar progress-bar-danger";
+				TableRow.children["ip_status"].children[0].children[0].innerHTML = "<small>MH370</small>";
+			}
+
 			// Name
 			TableRow.children["name"].innerHTML = result.servers[i].name;
 
 			// Type
 			TableRow.children["type"].innerHTML = result.servers[i].type;
-
-			// Host
-			//TableRow.children["host"].innerHTML = result.servers[i].host;
 
 			// Location
 			TableRow.children["location"].innerHTML = result.servers[i].location;
@@ -178,7 +184,13 @@ function uptime() {
 				if(result.servers[i].load == -1) {
 					TableRow.children["load"].innerHTML = "–";
 				} else {
-					TableRow.children["load"].innerHTML = result.servers[i].load;
+				    var loadstr = ""
+				    loadstr += result.servers[i].load_1.toFixed(2);
+				    loadstr += " | "
+				    loadstr += result.servers[i].load_5.toFixed(2);
+				    loadstr += " | "
+				    loadstr += result.servers[i].load_15.toFixed(2);
+					TableRow.children["load"].innerHTML = loadstr
 				}
 
 				// Network
@@ -206,10 +218,8 @@ function uptime() {
 					trafficstr += (result.servers[i].network_in/1024).toFixed(0) + "K";
 				else if(result.servers[i].network_in < 1024*1024*1024)
 					trafficstr += (result.servers[i].network_in/1024/1024).toFixed(1) + "M";
-				else if(result.servers[i].network_in < 1024*1024*1024*1024)
-					trafficstr += (result.servers[i].network_in/1024/1024/1024).toFixed(2) + "G";
 				else
-					trafficstr += (result.servers[i].network_in/1024/1024/1024/1024).toFixed(2) + "T";
+					trafficstr += (result.servers[i].network_in/1024/1024/1024).toFixed(2) + "G";
 				trafficstr += " | "
 				if(result.servers[i].network_out < 1024)
 					trafficstr += result.servers[i].network_out.toFixed(0) + "B";
@@ -217,10 +227,8 @@ function uptime() {
 					trafficstr += (result.servers[i].network_out/1024).toFixed(0) + "K";
 				else if(result.servers[i].network_out < 1024*1024*1024)
 					trafficstr += (result.servers[i].network_out/1024/1024).toFixed(1) + "M";
-				else if(result.servers[i].network_out < 1024*1024*1024*1024)
-					trafficstr += (result.servers[i].network_out/1024/1024/1024).toFixed(2) + "G";
 				else
-					trafficstr += (result.servers[i].network_out/1024/1024/1024/1024).toFixed(2) + "T";
+					trafficstr += (result.servers[i].network_out/1024/1024/1024).toFixed(2) + "G";
 				TableRow.children["traffic"].innerHTML = trafficstr;
 
 				// CPU
@@ -243,7 +251,7 @@ function uptime() {
 					TableRow.children["memory"].children[0].children[0].className = "progress-bar progress-bar-success";
 				TableRow.children["memory"].children[0].children[0].style.width = Mem + "%";
 				TableRow.children["memory"].children[0].children[0].innerHTML = Mem + "%";
-				ExpandRow[0].children["expand_mem"].innerHTML = "内存信息: " + bytesToSize(result.servers[i].memory_used*1024, 2) + " / " + bytesToSize(result.servers[i].memory_total*1024, 2);
+				ExpandRow[0].children["expand_mem"].innerHTML = "内存: " + bytesToSize(result.servers[i].memory_used*1024, 2) + " / " + bytesToSize(result.servers[i].memory_total*1024, 2);
 				// Swap
 				ExpandRow[0].children["expand_swap"].innerHTML = "交换分区: " + bytesToSize(result.servers[i].swap_used*1024, 2) + " / " + bytesToSize(result.servers[i].swap_total*1024, 2);
 
@@ -257,7 +265,7 @@ function uptime() {
 					TableRow.children["hdd"].children[0].children[0].className = "progress-bar progress-bar-success";
 				TableRow.children["hdd"].children[0].children[0].style.width = HDD + "%";
 				TableRow.children["hdd"].children[0].children[0].innerHTML = HDD + "%";
-				ExpandRow[0].children["expand_hdd"].innerHTML = "硬盘信息: " + bytesToSize(result.servers[i].hdd_used*1024*1024, 2) + " / " + bytesToSize(result.servers[i].hdd_total*1024*1024, 2);
+				ExpandRow[0].children["expand_hdd"].innerHTML = "硬盘: " + bytesToSize(result.servers[i].hdd_used*1024*1024, 2) + " / " + bytesToSize(result.servers[i].hdd_total*1024*1024, 2);
 
 				// Custom
 				if (result.servers[i].custom) {
@@ -279,6 +287,8 @@ function uptime() {
 				TableRow.children["online4"].children[0].children[0].innerHTML = "<small>错误</small>";
 				//TableRow.children["online6"].children[0].children[0].className = "progress-bar progress-bar-error";
 				//TableRow.children["online6"].children[0].children[0].innerHTML = "<small>错误</small>";
+				TableRow.children["ip_status"].children[0].children[0].className = "progress-bar progress-bar-error";
+				TableRow.children["ip_status"].children[0].children[0].innerHTML = "<small>错误</small>";
 				TableRow.children["uptime"].innerHTML = "<div class=\"progress progress-striped active\"><div style=\"width: 100%;\" class=\"progress-bar progress-bar-error\"><small>错误</small></div></div>";
 				TableRow.children["load"].innerHTML = "<div class=\"progress progress-striped active\"><div style=\"width: 100%;\" class=\"progress-bar progress-bar-error\"><small>错误</small></div></div>";
 				TableRow.children["network"].innerHTML = "<div class=\"progress progress-striped active\"><div style=\"width: 100%;\" class=\"progress-bar progress-bar-error\"><small>错误</small></div></div>";

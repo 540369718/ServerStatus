@@ -2,39 +2,36 @@
 	[
 		{
 			"username": "s01",
-			"password": "password",
-			"name": "Mainserver 1",
-			"type": "Dedicated Server",
-			"host": "No",
-			"location": "Austria",
-			"disabled": false
+			"name": "node1",
+			"type": "xen",
+			"host": "host1",
+			"location": "cn",
+			"password": "USER_DEFAULT_PASSWORD"
 		},
 		{
-			"username": "bs01",
-			"password": "password",
-			"name": "Backupserver 1",
-			"type": "Virtual Server",
-			"host": "No",
-			"location": "Switzerland",
-			"disabled": false
+			"username": "s02",
+			"name": "node2",
+			"type": "vmware",
+			"host": "host2",
+			"location": "jp",
+			"password": "USER_DEFAULT_PASSWORD"
 		},
 		{
-			"username": "hidden",
-			"password": "password",
-			"name": "Secret",
+			"disabled": true,
+			"username": "s03",
+			"name": "node3",
 			"type": "Nothing",
-			"host": "No",
-			"location": "Nowhere",
-			"disabled": true
+			"host": "host3",
+			"location": "fr",
+			"password": "USER_DEFAULT_PASSWORD"
 		},
 		{
-			"username": "butt",
-			"password": "password"，
-			"name": "Butt",
-			"type": "Cloud Server",
-			"host": "No",
-			"location": "Heaven??!",
-			"disabled": false
+			"username": "s04",
+			"name": "node4",
+			"type": "kvm",
+			"host": "host4",
+			"location": "kr",
+			"password": "USER_DEFAULT_PASSWORD"
 		}
 	]
 }
