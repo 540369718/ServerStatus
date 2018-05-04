@@ -10,8 +10,8 @@ export PATH
 # Server的用法
 #	/etc/init.d/status-server start|stop|restart|status
 #   tail -f /tmp/serverstatus_server.log
+#   修改配置 vim /usr/local/ServerStatus/server/config.json
 #   安装路径/usr/local/ServerStatus
-#   配置文件/usr/local/ServerStatus/server/config.json
 #   网页文件/usr/local/ServerStatus/web
 # Caddy的用法
 #   /etc/init.d/caddy start|stop|restart|status
