@@ -44,7 +44,6 @@ vim /usr/local/ServerStatus/server/config.json //按照JSON格式即可
 /etc/init.d/status-server restart
 ```
 
-
 # 其他操作
 
 ### 客户端：
@@ -83,10 +82,3 @@ Caddy配置文件：/usr/local/caddy/caddy
 服务器总流量单位为：T=TB，G=GB，M=MB，K=KB
 
 ## 修改后的脚本仅适用于Ubuntu
-
-# 相关开源项目，感谢： 
-
-* ServerStatus：https://github.com/BotoX/ServerStatus
-* mojeda: https://github.com/mojeda 
-* mojeda's ServerStatus: https://github.com/mojeda/ServerStatus
-* BlueVM's project: http://www.lowendtalk.com/discussion/comment/169690#Comment_169690
