@@ -33,6 +33,7 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/540369718/Serve
 # 客户端手动修改配置
 ``` bash
 vim /usr/local/ServerStatus/status-client.py  //修改SERVER地址，username帐号， password密码
+vim /usr/local/ServerStatus/customMsg.txt 添加显示信息
 ```
 
 # 服务端手动修改配置
