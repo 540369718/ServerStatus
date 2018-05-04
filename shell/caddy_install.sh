@@ -67,7 +67,7 @@ install_caddy(){
 }
 Install_Main(){
 	check_sys
-	if [[ ${bit} != "x86_64"]] || [[${release} != "ubuntu"]]; then
+	if [[ ${bit} != "x86_64" ]] || [[ ${release} != "ubuntu" ]]; then
 		echo -e "${Error_font_prefix}[错误]${Font_suffix} 不支持!" && exit 1		
 	fi
 	install_caddy
