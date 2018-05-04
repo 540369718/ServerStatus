@@ -25,8 +25,8 @@
 wget -N --no-check-certificate https://softs.fun/Bash/status.sh && chmod +x status.sh
 
 # 尝试使用备用下载：
-wget -N --no-check-certificate https://github.com/540369718/ServerStatus-Toyo/blob/master/shell/status_server.sh && chmod +x status_server.sh && bash status_server.sh
-wget -N --no-check-certificate https://github.com/540369718/ServerStatus-Toyo/blob/master/shell/status_client.sh && chmod +x status_client.sh && bash status_client.sh
+wget -N --no-check-certificate https://raw.githubusercontent.com/540369718/ServerStatus-Toyo/master/shell/status_server.sh && chmod +x status_server.sh && bash status_server.sh
+wget -N --no-check-certificate https://raw.githubusercontent.com/540369718/ServerStatus-Toyo/master/shell/status_client.sh && chmod +x status_client.sh && bash status_client.sh
 ```
 
 运行脚本后会出现脚本操作菜单，选择并输入` 1 `就会开始安装。
