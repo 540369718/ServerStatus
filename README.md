@@ -23,7 +23,7 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/540369718/Serve
 
 # 客户端手动修改配置
 ``` bash
-vim client-linux.py, 修改SERVER地址，username帐号， password密码
+vim client-linux.py  //修改SERVER地址，username帐号， password密码
 ```
 
 # 服务端手动修改配置
@@ -98,7 +98,8 @@ Caddy配置文件：/usr/local/caddy/caddy
 
 # ServerStatus中文版：   
 
-* ServerStatus中文版是一个酷炫高逼格的云探针、云监控、服务器云监控、多服务器探针~。
+* ServerStatus中文版(https://github.com/tenyue/ServerStatus) 是一个酷炫高逼格的云探针、云监控、服务器云监控、多服务器探针~。
 * 在线演示：https://tz.cloudcpp.com 
 # ServerStatus-Toyo： 
-* ServerStatus-Toyo版是一个酷炫高逼格的云探针、云监控、服务器云监控、多服务器探针~，该云监控（云探针）是ServerStatus（ https://github.com/tenyue/ServerStatus ）项目的优化/修改版。
+* ServerStatus-Toyo版(https://github.com/ToyoDAdoubi/ServerStatus-Toyo) 是一个酷炫高逼格的云探针、云监控、服务器云监控、多服务器探针~，该云监控（云探针）是ServerStatus项目的优化/修改版。
+* 在线演示：http://tz.toyoo.ml/
