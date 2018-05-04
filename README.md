@@ -1,5 +1,14 @@
-# 目录介绍：
+# ServerStatus：
+* ServerStatus 是ServerStatus-Toyo版的自用修改版。仅支持Ubuntu。
 
+## ServerStatus中文版：   
+* ServerStatus中文版(https://github.com/tenyue/ServerStatus) 是一个酷炫高逼格的云探针、云监控、服务器云监控、多服务器探针~。
+* 在线演示：https://tz.cloudcpp.com 
+## ServerStatus-Toyo： 
+* ServerStatus-Toyo版(https://github.com/ToyoDAdoubi/ServerStatus-Toyo) 是一个酷炫高逼格的云探针、云监控、服务器云监控、多服务器探针~，该云监控（云探针）是ServerStatus项目的优化/修改版。
+* 在线演示：http://tz.toyoo.ml/
+
+# 目录介绍：
 * clients  客户端文件
 * server   服务端文件
 * shell    安装文件
@@ -11,13 +20,13 @@
 
 客户端(服务端也要运行客户端才能监控本机)
 ``` bash
-wget -N --no-check-certificate https://raw.githubusercontent.com/540369718/ServerStatus-Toyo/master/shell/status_client.sh && chmod +x status_client.sh && bash status_client.sh
+wget -N --no-check-certificate https://raw.githubusercontent.com/540369718/ServerStatus/master/shell/status_client.sh && chmod +x status_client.sh && bash status_client.sh
 ```
 会要求输入服务端的IP（本机就是默认的127.0.0.1），用户名和密码（与服务端一致即可，不是SSH密码）
 
 服务端
 ``` bash
-wget -N --no-check-certificate https://raw.githubusercontent.com/540369718/ServerStatus-Toyo/master/shell/status_server.sh && chmod +x status_server.sh && bash status_server.sh
+wget -N --no-check-certificate https://raw.githubusercontent.com/540369718/ServerStatus/master/shell/status_server.sh && chmod +x status_server.sh && bash status_server.sh
 ```
 会要求输入服务器端的IP或域名，以及端口。用于展示网站。
 
@@ -94,12 +103,3 @@ Caddy配置文件：/usr/local/caddy/caddy
 网络实时流量单位为：G=GB/s，M=MB/s，K=KB/s
 
 服务器总流量单位为：T=TB，G=GB，M=MB，K=KB
-
-
-# ServerStatus中文版：   
-
-* ServerStatus中文版(https://github.com/tenyue/ServerStatus) 是一个酷炫高逼格的云探针、云监控、服务器云监控、多服务器探针~。
-* 在线演示：https://tz.cloudcpp.com 
-# ServerStatus-Toyo： 
-* ServerStatus-Toyo版(https://github.com/ToyoDAdoubi/ServerStatus-Toyo) 是一个酷炫高逼格的云探针、云监控、服务器云监控、多服务器探针~，该云监控（云探针）是ServerStatus项目的优化/修改版。
-* 在线演示：http://tz.toyoo.ml/
