@@ -85,13 +85,13 @@ Download_Server_Status_client(){
 	cd "/usr/local"
 	[[ ! -e ${file} ]] && mkdir "${file}"
 	cd "${file}"
-	wget -N --no-check-certificate "https://raw.githubusercontent.com/540369718/ServerStatus-Toyo/master/clients/client-linux.py"
+	wget -N --no-check-certificate "https://raw.githubusercontent.com/540369718/ServerStatus/master/clients/client-linux.py"
 	[[ ! -e "client-linux.py" ]] && echo -e "${Error} ServerStatus 客户端下载失败 !" && exit 1
 	mv client-linux.py status-client.py
 	[[ ! -e "status-client.py" ]] && echo -e "${Error} ServerStatus 服务端文件夹重命名失败 !" && rm -rf client-linux.py && exit 1
 }
 Service_Server_Status_client(){	
-	if ! wget --no-check-certificate "https://raw.githubusercontent.com/540369718/ServerStatus-Toyo/master/shell/server_status_client_debian" -O /etc/init.d/status-client; then
+	if ! wget --no-check-certificate "https://raw.githubusercontent.com/540369718/ServerStatus/master/shell/server_status_client_debian" -O /etc/init.d/status-client; then
 		echo -e "${Error} ServerStatus 客户端服务管理脚本下载失败 !" && exit 1
 	fi
 	chmod +x /etc/init.d/status-client

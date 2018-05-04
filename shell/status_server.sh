@@ -84,7 +84,7 @@ Set_server_port(){
 	done
 }
 Install_caddy(){			
-	wget -N --no-check-certificate https://raw.githubusercontent.com/540369718/ServerStatus-Toyo/master/shell/caddy_install.sh
+	wget -N --no-check-certificate https://raw.githubusercontent.com/540369718/ServerStatus/master/shell/caddy_install.sh
 	chmod +x caddy_install.sh
 	bash caddy_install.sh
 	[[ ! -e "/usr/local/caddy/caddy" ]] && echo -e "${Error} Caddy安装失败，请手动部署，Web网页文件位置：${Web_file}" && exit 0
@@ -102,7 +102,7 @@ EOF
 }
 Download_Server_Status_server(){
 	cd "/usr/local"
-	wget -N --no-check-certificate "https://github.com/540369718/ServerStatus-Toyo/archive/master.zip"
+	wget -N --no-check-certificate "https://github.com/540369718/ServerStatus/archive/master.zip"
 	[[ ! -e "master.zip" ]] && echo -e "${Error} ServerStatus 服务端下载失败 !" && exit 1
 	unzip master.zip && rm -rf master.zip
 	[[ ! -e "ServerStatus-Toyo-master" ]] && echo -e "${Error} ServerStatus 服务端解压失败 !" && exit 1
@@ -132,7 +132,7 @@ Install_jq(){
 	fi
 }
 Service_Server_Status_server(){	
-	if ! wget --no-check-certificate "https://raw.githubusercontent.com/540369718/ServerStatus-Toyo/master/shell/server_status_server_debian" -O /etc/init.d/status-server; then
+	if ! wget --no-check-certificate "https://raw.githubusercontent.com/540369718/ServerStatus/master/shell/server_status_server_debian" -O /etc/init.d/status-server; then
 		echo -e "${Error} ServerStatus 服务端服务管理脚本下载失败 !" && exit 1
 	fi
 	chmod +x /etc/init.d/status-server
