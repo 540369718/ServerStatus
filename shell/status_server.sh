@@ -105,14 +105,14 @@ Download_Server_Status_server(){
 	wget -N --no-check-certificate "https://github.com/540369718/ServerStatus/archive/master.zip"
 	[[ ! -e "master.zip" ]] && echo -e "${Error} ServerStatus 服务端下载失败 !" && exit 1
 	unzip master.zip && rm -rf master.zip
-	[[ ! -e "ServerStatus-Toyo-master" ]] && echo -e "${Error} ServerStatus 服务端已经存在 !" && rm -rf ServerStatus-Toyo-master
+	[[ ! -e "ServerStatus-master" ]] && echo -e "${Error} ServerStatus 服务端已经存在 !" && rm -rf ServerStatus-master
 	if [[ ! -e "${file}" ]]; then
-		mv ServerStatus-Toyo-master ServerStatus
+		mv ServerStatus-master ServerStatus
 	else
-		mv ServerStatus-Toyo-master/* "${file}"
-		rm -rf ServerStatus-Toyo-master
+		mv ServerStatus-master/* "${file}"
+		rm -rf ServerStatus-master
 	fi
-	[[ ! -e "${server_file}" ]] && echo -e "${Error} ServerStatus 服务端文件夹重命名失败 !" && rm -rf ServerStatus-Toyo-master && exit 1
+	[[ ! -e "${server_file}" ]] && echo -e "${Error} ServerStatus 服务端文件夹重命名失败 !" && rm -rf ServerStatus-master && exit 1
 	cd "${server_file}"
 	make
 	[[ ! -e "sergate" ]] && echo -e "${Error} ServerStatus 服务端安装失败 !" && exit 1
