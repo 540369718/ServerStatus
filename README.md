@@ -1,10 +1,8 @@
-# ServerStatus-Toyo： 
-* ServerStatus-Toyo版是一个酷炫高逼格的云探针、云监控、服务器云监控、多服务器探针~，该云监控（云探针）是ServerStatus（ https://github.com/tenyue/ServerStatus ）项目的优化/修改版。
-
 # 目录介绍：
 
 * clients  客户端文件
 * server   服务端文件
+* shell    安装文件
 * web      网站文件  
 
 # 安装教程：     
@@ -25,14 +23,40 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/540369718/Serve
 
 # 客户端手动修改配置
 ``` bash
- vim /usr/local/ServerStatus/status-client.py //修改SERVER,USER,PASSWORD三个字段，与服务器端一致
+vim client-linux.py, 修改SERVER地址，username帐号， password密码
 ```
 
 # 服务端手动修改配置
 ``` bash
 vim /usr/local/ServerStatus/server/config.json //按照JSON格式即可
 /etc/init.d/status-server restart
+```     
+其中config.json文件的格式如下，注意username, password的值需要和客户端对应一致                 
 ```
+{"servers":
+	[
+		{
+			"username": "s01",
+			"password": "some-hard-to-guess-copy-paste-password"
+			"name": "Mainserver 1",
+			"type": "Dedicated Server",
+			"host": "GenericServerHost123",
+			"location": "Austria",
+			"disabled": false
+		},
+		{
+			"username": "s02",
+			"password": "some-hard-to-guess-copy-paste-password"
+			"name": "Mainserver 2",
+			"type": "Dedicated Server",
+			"host": "GenericServerHost123",
+			"location": "Austria",
+			"disabled": false			
+		}
+	]
+}       
+```
+
 
 # 其他操作
 
@@ -71,4 +95,10 @@ Caddy配置文件：/usr/local/caddy/caddy
 
 服务器总流量单位为：T=TB，G=GB，M=MB，K=KB
 
-## 修改后的脚本仅适用于Ubuntu
+
+# ServerStatus中文版：   
+
+* ServerStatus中文版是一个酷炫高逼格的云探针、云监控、服务器云监控、多服务器探针~。
+* 在线演示：https://tz.cloudcpp.com 
+# ServerStatus-Toyo： 
+* ServerStatus-Toyo版是一个酷炫高逼格的云探针、云监控、服务器云监控、多服务器探针~，该云监控（云探针）是ServerStatus（ https://github.com/tenyue/ServerStatus ）项目的优化/修改版。
