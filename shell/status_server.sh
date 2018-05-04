@@ -181,7 +181,7 @@ Start_ServerStatus_server(){
 	/etc/init.d/status-server start
 }
 Installation_dependency(){	
-	[[ ${release} != "ubuntu" ]] && exit(1)
+	[[ ${release} != "ubuntu" ]] && exit 1
 	apt-get update
 	apt-get install -y python unzip vim build-essential make	
 }
