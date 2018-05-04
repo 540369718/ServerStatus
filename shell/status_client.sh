@@ -11,6 +11,7 @@ export PATH
 #	/etc/init.d/status-client start|stop|restart|status
 #   tail -f tmp/serverstatus_client.log
 #   安装路径/usr/local/ServerStatus
+#   修改信息 vim /usr/local/ServerStatus/status-client.py,修改SERVER,USER,PASSWORD三个字段，与服务器端一致
 #=================================================
 
 sh_ver="1.0.0"
