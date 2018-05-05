@@ -160,7 +160,24 @@ def liuliang():
                     NET_IN += int(netinfo[0][1])
                     NET_OUT += int(netinfo[0][9])
     return NET_IN, NET_OUT
-
+	
+def ip_status():
+	object_check = ['www.10010.com', 'www.189.cn', 'www.10086.cn']
+	ip_check = 0
+	for i in object_check:
+		s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		s.settimeout(1)
+		try:
+			s.connect((i, 80))
+		except:
+			ip_check += 1
+		s.close()
+		del s
+	if ip_check >= 2:
+		return False
+	else:
+		return True
+		
 def get_network(ip_version):
 	if(ip_version == 4):
 		HOST = "ipv4.google.com"
@@ -217,7 +234,8 @@ if __name__ == '__main__':
 				CustomMsg = get_custom_msg()
 				MemoryTotal, MemoryUsed, SwapTotal, SwapFree = get_memory()
 				HDDTotal, HDDUsed = get_hdd()
-
+				IP_STATUS = ip_status()
+				
 				array = {}
 				if not timer:
 					array['online' + str(check_ip)] = get_network(check_ip)
@@ -225,7 +243,7 @@ if __name__ == '__main__':
 				else:
 					timer -= 1*INTERVAL
 
-				array['tcp6_num'] = Tcp6Num
+				#array['tcp6_num'] = Tcp6Num
 				array['custom'] = CustomMsg
 				array['uptime'] = Uptime
 				array['load'] = Load
@@ -240,7 +258,8 @@ if __name__ == '__main__':
 				array['network_tx'] = NetTx
 				array['network_in'] = NET_IN
 				array['network_out'] = NET_OUT
-
+				array['ip_status'] = IP_STATUS
+				
 				s.send("update " + json.dumps(array) + "\n")
 		except KeyboardInterrupt:
 			raise
