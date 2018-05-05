@@ -101,6 +101,21 @@ Caddy配置文件：/usr/local/caddy/caddy
 
 # 其他说明
 
-网络实时流量单位为：G=GB/s，M=MB/s，K=KB/s
+## 添加新字段
+可以参考这个[commits](https://github.com/540369718/ServerStatus/commit/24d731ee533c6c895e6781f75a75ab3da5ed6e2a)
+1. 在client/client-linux.py的main函数中
+	array['新增字段'] = 新增值
+2. 在server/src/main.h的CMain.CClient.CStats中
+	新增字段 bool 新增字段;
+3. 在server/src/main.cpp的JSONUpdateThread函数中
+	\"JSON名\": %s,	pClients[i].m_Stats.新增字段
+4. 在server/src/main.cpp的HandleMessage函数中
+	if(rStart["JSON名"].type)
+			pClient->m_Stats.m_IpStatus = rStart["JSON名"].u.boolean;
+	dbg_msg('\nIpStatus: %s'   pClient->m_Stats.新增字段
+5. 在web/js/serverstatus.js的uptime函数中
+	HTML 模板要新增<td id=\"JSON名\"> </td>
+	TableRow.children["JSON名"].children[0].children[0]的className和innerHTML要处理
+	.fail函数也要处理
 
-服务器总流量单位为：T=TB，G=GB，M=MB，K=KB
+
