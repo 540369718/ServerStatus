@@ -182,8 +182,7 @@ if __name__ == "__main__":
                     timer = 10
                 else:
                     timer -= 1 * INTERVAL
-
-                # array['tcp6_num'] = Tcp6Num
+                
                 array['custom'] = CustomMsg  # 自定义字段
                 array['uptime'] = Uptime  # 在线时间
                 array['load'] = Load  # 负载
@@ -199,7 +198,7 @@ if __name__ == "__main__":
                 array['network_in'] = DATA_RECV  # 下载流量
                 array['network_out'] = DATA_SENT  # 上传流量
                 array['ip_status'] = IP_STATUS  # IP状态
-
+				array['tcp4_num'] = Tcp4Num  # 在线人数
                 s.send("update " + json.dumps(array) + "\n")
         except KeyboardInterrupt:
             raise

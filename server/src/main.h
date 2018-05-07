@@ -45,7 +45,7 @@ class CMain
 			bool m_Online4;
 			bool m_Online6;
 			bool m_IpStatus;    //mh361 or mh370, mourn mh370, 2014-03-0 01:20　lost from all over the 
-			//int64_t m_Tcp6Num;
+			int64_t m_Tcp4Num;
 			int64_t m_Uptime;
 			double m_Load;
 			int64_t m_NetworkRx;

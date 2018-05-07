@@ -90,7 +90,7 @@ function uptime() {
 						"<td id=\"name\">加载中</td>" +
 						"<td id=\"type\">加载中</td>" +
 						"<!-- td id=\"host\">加载中</td -->" +
-						"<td id=\"location\">加载中</td>" +
+						"<td id=\"tcp4_num\">加载中</td>" +
 						"<td id=\"uptime\">加载中</td>" +
 						"<td id=\"load\">加载中</td>" +
 						"<td id=\"network\">加载中</td>" +
@@ -152,8 +152,8 @@ function uptime() {
 			// Host
 			//TableRow.children["host"].innerHTML = result.servers[i].host;
 
-			// Location
-			TableRow.children["location"].innerHTML = result.servers[i].location;
+			// tcp4_num
+			TableRow.children["tcp4_num"].innerHTML = result.servers[i].tcp4_num;
 			if (!result.servers[i].online4 && !result.servers[i].online6) {
 				if (server_status[i]) {
 					TableRow.children["uptime"].innerHTML = "–";
