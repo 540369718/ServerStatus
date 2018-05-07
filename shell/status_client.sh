@@ -80,9 +80,9 @@ Set_config_client(){
 Installation_dependency(){
 	apt-get update
 	apt-get install -y python vim python-pip python-dev
-	sudo pip install --upgrade pip
+	sudo python -m pip install --upgrade pip
 	hash -r
-	sudo pip install pstuil
+	sudo python -m pip install pstuil
 }
 Download_Server_Status_client(){
 	cd "/usr/local"
