@@ -88,6 +88,8 @@ Download_Server_Status_client(){
 	cd "/usr/local"
 	[[ ! -e ${file} ]] && mkdir "${file}"
 	cd "${file}"
+	[[ -e "client-linux.py" ]] rm -rf client-linux.py
+	[[ -e "status-client.py" ]] rm -rf status-client.py
 	wget -N --no-check-certificate "https://raw.githubusercontent.com/540369718/ServerStatus/master/clients/client-linux.py"
 	[[ ! -e "client-linux.py" ]] && echo -e "${Error} ServerStatus 客户端下载失败 !" && exit 1
 	mv client-linux.py status-client.py
