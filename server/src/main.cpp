@@ -252,7 +252,7 @@ void CMain::JSONUpdateThread(void *pUser)
 
 				str_format(pBuf, sizeof(aFileBuf) - (pBuf - aFileBuf), "{ \"name\": \"%s\", \"type\": \"%s\", \"host\": \"%s\", \"location\": \"%s\", \"online4\": %s, \"online6\": %s,\"ip_status\": %s,\"tcp4_num\": %" PRId64 ", \"uptime\": \"%s\", \"load\": %.2f, \"network_rx\": %" PRId64 ", \"network_tx\": %" PRId64 ", \"network_in\": %" PRId64 ", \"network_out\": %" PRId64 ", \"cpu\": %d, \"memory_total\": %" PRId64 ", \"memory_used\": %" PRId64 ", \"swap_total\": %" PRId64 ", \"swap_used\": %" PRId64 ", \"hdd_total\": %" PRId64 ", \"hdd_used\": %" PRId64 ", \"custom\": \"%s\" },\n",
 					pClients[i].m_aName, pClients[i].m_aType, pClients[i].m_aHost, pClients[i].m_aLocation, pClients[i].m_Stats.m_Online4 ? "true" : "false", pClients[i].m_Stats.m_Online6 ? "true" : "false",	pClients[i].m_Stats.m_IpStatus ? "true": "false",
-					pClient->m_Stats.m_Tcp4Num,
+					pClients[i].m_Stats.m_Tcp4Num,
 					aUptime, pClients[i].m_Stats.m_Load, pClients[i].m_Stats.m_NetworkRx, pClients[i].m_Stats.m_NetworkTx, pClients[i].m_Stats.m_NetworkIN, pClients[i].m_Stats.m_NetworkOUT,(int)pClients[i].m_Stats.m_CPU, pClients[i].m_Stats.m_MemTotal, pClients[i].m_Stats.m_MemUsed, pClients[i].m_Stats.m_SwapTotal, pClients[i].m_Stats.m_SwapUsed, pClients[i].m_Stats.m_HDDTotal, pClients[i].m_Stats.m_HDDUsed, pClients[i].m_Stats.m_aCustom);
 				pBuf += strlen(pBuf);
 			}
