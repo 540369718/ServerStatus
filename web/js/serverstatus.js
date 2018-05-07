@@ -152,12 +152,11 @@ function uptime() {
 			// Host
 			//TableRow.children["host"].innerHTML = result.servers[i].host;
 
-			// tcp4_num
-			TableRow.children["tcp4_num"].innerHTML = result.servers[i].tcp4_num;
 			if (!result.servers[i].online4 && !result.servers[i].online6) {
 				if (server_status[i]) {
 					TableRow.children["uptime"].innerHTML = "–";
 					TableRow.children["load"].innerHTML = "–";
+					TableRow.children["tcp4_num"].innerHTML = "–";
 					TableRow.children["network"].innerHTML = "–";
 					TableRow.children["traffic"].innerHTML = "–";
 					TableRow.children["cpu"].children[0].children[0].className = "progress-bar progress-bar-danger";
@@ -180,7 +179,9 @@ function uptime() {
 					TableRow.setAttribute("data-target", "#rt" + i);
 					server_status[i] = true;
 				}
-
+				// tcp4_num
+				TableRow.children["tcp4_num"].innerHTML = result.servers[i].tcp4_num;
+				
 				// Uptime
 				TableRow.children["uptime"].innerHTML = result.servers[i].uptime;
 

@@ -166,7 +166,7 @@ if __name__ == "__main__":
 
                 Net_RECV, Net_SENT = traffic.get()  # 下载速度 上传速度
                 DATA_RECV, DATA_SENT = dataflow()  # 下载流量,上传流量
-                Uptime = psutil.boot_time()  # 在线时间
+                Uptime = int(time.time() - psutil.boot_time())  # 在线时间
                 Load = get_load()  # CPU负载
                 Tcp4Num = get_TCP4_num()  # TCP4连接数
                 CustomMsg = get_custom_msg()  # 自定义字段
@@ -197,8 +197,9 @@ if __name__ == "__main__":
                 array['network_tx'] = Net_SENT  # 上传速度
                 array['network_in'] = DATA_RECV  # 下载流量
                 array['network_out'] = DATA_SENT  # 上传流量
-                array['ip_status'] = IP_STATUS  # IP状态
+				array['ip_status'] = IP_STATUS  # IP状态
 				array['tcp4_num'] = Tcp4Num  # 在线人数
+				
                 s.send("update " + json.dumps(array) + "\n")
         except KeyboardInterrupt:
             raise
