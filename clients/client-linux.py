@@ -15,7 +15,7 @@ import psutil
 import collections
 import io
 
-local_path = "/etc/shadowsocks.json"
+local_path = "/etc/shadowsocks-manager/config.json"
 
 class Traffic:
     def __init__(self):
